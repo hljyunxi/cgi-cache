@@ -8,9 +8,9 @@ cgi-cache
 使用cgi-cache可以很简单的实现上述的需求
 
 ```
-    @cache("search-{user_name}-{user_id}-{user_sex}-{page}", expires = 5*60)
-    def search(user_name, user_id, user_sex, page):
-       big sql query
+@cache(redis_storage, "search-{user_name}-{user_id}-{user_sex}-{page}", expires = 5*60)
+def search(user_name, user_id, user_sex, page):
+   big sql query
 ```
 
 上面的代码就实现了对搜索结果缓存5分钟的效果。
