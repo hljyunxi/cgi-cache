@@ -3,7 +3,7 @@
 #Author: chenyunyun<hljyunxi@gmail.com>
 
 import errors
-import lock
+from lock import Lock
 import redis_helper
 
 class Storage(object):
