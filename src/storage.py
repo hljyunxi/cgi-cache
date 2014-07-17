@@ -3,6 +3,7 @@
 #Author: chenyunyun<hljyunxi@gmail.com>
 
 import errors
+import lock
 import redis_helper
 
 class Storage(object):
@@ -13,6 +14,9 @@ class Storage(object):
         raise errors.NotImplementError()
 
     def get(self, key):
+        raise errors.NotImplementError()
+
+    def get_locker(self, lock_name, expires=None):
         raise errors.NotImplementError()
 
 
@@ -26,3 +30,6 @@ class RedisStorage(Storage):
 
     def set(self, key, value):
         return self.rdb.set(key, value)
+
+    def get_locker(self, lock_name, expires=None):
+        return Lock(self.rdb, lock_name, expires)
