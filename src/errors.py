@@ -8,3 +8,6 @@ class CgiCacheError(Exception):
 
 class NotImplementError(CgiCacheError):
     pass
+
+class CacheKeyFormatError(CgiCacheError):
+    pass
